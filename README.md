@@ -16,7 +16,7 @@ what I'm going to do for the challenge:
 	docker build -t leo-python:3.8-buster .
 	```
 * write all those kubernetes yaml manifest files, including deployment, service, configmaps, namespace, [optional: serviceacount, clusterrolebinding], hpa... 
-* put all together manifest files in to kustomization.yaml, then use kustomization to deploy to k8s cluster, alternatively, i can deploy manually one by one use kubectl or even by shell scripts
+* put all together manifest files into kustomization.yaml, then use kustomize tool to deploy to k8s cluster, alternatively, I can deploy manually one by one by using kubectl or even by shell scripts
 * set up those `env` in deployment to connect to postgresql database.
 * verify and debug during all resources deployment and exceptions happened.
 * use kubectl logs pod, kubectl describe pod ...  to dig into issues. 
