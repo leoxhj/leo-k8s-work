@@ -73,8 +73,8 @@ requirements:
 `kubectl cluster-info`
 2. the commands of deploying the above resource manifests.  
 ```bash
-# deploy use kustomize tools
-kubectl kustomize manifest
+# deploy use kustomize tools, <manifests directory>
+kubectl kustomize manifests
 # manually deployement resources files.
 kubectl apply -f ns.yaml
 kubectl apply -f deployment.yaml
@@ -104,6 +104,10 @@ Validating the application you deployed for the endpoint of /my/email/validate
 with the following command:
 
 curl --header 'HTTP_AUTH_KEY: dummy_key' -X POST -d '{"email": "example@company.com"}' http://xxx/my/email/validate
+```bash
+curl --header 'HTTP_AUTH_KEY: dummy_key' -X POST -d '{"email": "example@company.com"}' http://192.168.2.20/my/email/validate
+```
+
 Write down the command you are using above and the response of the application to the validation-output.txt
 
 When you're done, send all your artifacts (as a zip file) to platform@top20talent.com, these files should allow us to deploy the same result to any other k8s cluster.
