@@ -27,6 +27,8 @@ spec:
           volumeMounts:
             - mountPath: /test1
               name: my-volume
+            - mountPath: /etc/test/conf
+              name: leocm
       tolerations:
         - key: CriticalAddonsOnly
           operator: Exists
@@ -36,3 +38,6 @@ spec:
         - name: my-volume
           persistentVolumeClaim:
             claimName: leo-test-pvc
+        - name: leocm
+          configMap:
+            name: myconfigmap
