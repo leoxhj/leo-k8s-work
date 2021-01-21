@@ -40,7 +40,8 @@ Requirements:
 6). the configuration of the application supposed to be separated from the application object resource.
 > A: use configmap and then VolumeMount , Volume(point the configmaps names) in pod
 7). the replicas of the application object should be as much as possible separated from each other on the cluster node.
-> A: use affirnity, podAntiAffirnity, like below sample which we have done in our project:
+```bash
+# use affirnity, podAntiAffirnity, like below sample which we have done in our project:
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -48,6 +49,7 @@ Requirements:
               matchLabels:
                 app: topolvm-test
             topologyKey: kubernetes.io/hostname
+```	    
 8). (optional) the application supposed to be automatically catch-up with the new changes in its configuration without deployment.
 
 9). it should come with a README file documenting how to deploy it on a different cluster
@@ -69,7 +71,6 @@ requirements:
 1). the commands of getting k8s cluster information.
 > A: kubectl cluster-info   
 2). the commands of deploying the above resource manifests.
-> A: 
 ```bash
 kubectl apply -f ns.yaml
 kubectl apply -f deployment.yaml
