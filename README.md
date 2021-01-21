@@ -57,12 +57,13 @@ Requirements:
 NOTES:
 
 The application required configuration(environment variables) are:
-
+```bash
 DB_HOST=localhost
 DB_USER=leotest
 DB_PASS=leotest123
 DB_NAME=leotest
 HTTP_AUTH_KEY=dummy_key
+```
 
 Step Three:
 deploy the above resources to the cluster and make sure they work correctly, in the end, output their status as long as the command you are using to the file resources-output.txt.
