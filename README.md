@@ -37,6 +37,7 @@ Requirements:
 3. the application supposed to be auto restarted when crashed.  
 `yes, deployment workload, the replicaset will take care of when instance is down, to make sure the expected pods are same in which defined in deployment.`
 4. the application supposed to be out-of-serving when it's unhealthy.  
+`dont quite sure of this, if some node is failure or due to regular maintenance, then the pod should never get up on this node if toleration has set for same host. try to cordon node or drain in this situation`
 5. the application supposed to be exposed to the outside of the cluster.  
 `here uses service with type: LoadBalancer to expose service outside cluster, like GCP and other cloud which providing load balancing service.`
 6. the configuration of the application supposed to be separated from the application object resource.  
