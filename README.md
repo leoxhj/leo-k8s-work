@@ -1,4 +1,4 @@
-Project name: fastapi-project-template project.
+Project name: `fastapi-project-template`
 
 p.s.
 the time consuming part is: to build up image since need doing apt-get update && apt-get upgrade -y since it's in China, need to save up time, so dont have time to hack the debian config file to point to domestic apt.sources.
