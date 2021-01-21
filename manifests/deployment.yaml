@@ -40,4 +40,4 @@ spec:
             claimName: leo-test-pvc
         - name: leocm
           configMap:
-            name: myconfigmap
+            name: leoconfigmap
