@@ -1,0 +1,9 @@
+# using K8s kustomization tool to deploy
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ns.yaml
+  - deployment.yaml
+  - service.yaml
+  - hpa.yaml
+  
