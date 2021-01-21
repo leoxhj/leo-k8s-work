@@ -8,18 +8,18 @@ spec:
   replicas: 2 
   selector:
     matchLabels:
-      app.kubernetes.io/name: fastapi-project-template
+      app: fastapi-project-template
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: fastapi-project-template 
+        app: fastapi-project-template 
     spec:
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
               matchLabels:
-                elasticsearch.k8s.elastic.co/cluster-name: topolvm-test
+                app: fastapi-project-template
             topologyKey: kubernetes.io/hostname
       containers:
         - name: fastapi-project-template 
@@ -35,4 +35,4 @@ spec:
       volumes:
         - name: my-volume
           persistentVolumeClaim:
-            claimName: topolvm-pvc
+            claimName: leo-test-pvc
