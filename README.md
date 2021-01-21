@@ -73,6 +73,9 @@ requirements:
 `kubectl cluster-info`
 2. the commands of deploying the above resource manifests.  
 ```bash
+# deploy use kustomize tools
+kubectl kustomize manifest
+# manually deployement resources files.
 kubectl apply -f ns.yaml
 kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml
