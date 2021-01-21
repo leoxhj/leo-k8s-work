@@ -18,29 +18,29 @@ what I'm going to do for the challenge:
 * write all those kubernetes yaml manifest files, including deployment, service, configmaps, namespace, [optional: serviceacount, clusterrolebinding], hpa... 
 * put all together manifest files in to kustomization.yaml, then use kustomization to deploy to k8s cluster, alternatively, i can deploy manually one by one use kubectl or even by shell scripts
 * set up those `env` in deployment to connect to postgresql database.
-* verfity and debug during all resources deployment and exceptions happened.
+* verify and debug during all resources deployment and exceptions happened.
 * use kubectl logs pod, kubectl describe pod ...  to dig into issues. 
-* verify from curl command to test the application from its http restpai is ok or not.
+* verify from `curl` command to test the application from its http restpai to see is ok or not.
 
 Tasks:
 Step One:
-folder name: leo-k8s-task
+folder name: `leo-k8s-task`
 
 Step Two:
 Requirements:
 1). the application supposed to be having zero downtime when performing upgrades.
-A: Deployment workload will performing rolling upgrades which means zero downtime, the new replicaset will be created and once all new pods in new replicaset is ready, the pods in old replicaset will be deleted.
+> A: Deployment workload will performing rolling upgrades which means zero downtime, the new replicaset will be created and once all new pods in new replicaset is ready, the pods in old replicaset will be deleted.
 2). the application supposed to be auto-scaled based on its CPU/memory usage.
-A: here uses a hpa.yaml file to do so
+> A: here uses a hpa.yaml file to do so
 3). the application supposed to be auto restarted when crashed.
-A: yes, deployment workload, the replicaset will take care of when instance is down, to make sure the expected pods are same in which defined in deployment.
+> A: yes, deployment workload, the replicaset will take care of when instance is down, to make sure the expected pods are same in which defined in deployment.
 4). the application supposed to be out-of-serving when it's unhealthy.
 5). the application supposed to be exposed to the outside of the cluster.
-A: here uses service with type: LoadBalancer to expose service outside cluster, like GCP and other cloud which providing load balancing service.
+> A: here uses service with type: LoadBalancer to expose service outside cluster, like GCP and other cloud which providing load balancing service.
 6). the configuration of the application supposed to be separated from the application object resource.
-A: use configmap and then VolumeMount , Volume(point the configmaps names) in pod
+> A: use configmap and then VolumeMount , Volume(point the configmaps names) in pod
 7). the replicas of the application object should be as much as possible separated from each other on the cluster node.
-A: use affirnity, podAntiAffirnity, like below sample which we have done in our project:
+> A: use affirnity, podAntiAffirnity, like below sample which we have done in our project:
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -56,10 +56,10 @@ NOTES:
 
 The application required configuration(environment variables) are:
 
-DB_HOST=<your-db-host-name>
-DB_USER=<your-db-user>
-DB_PASS=<your-db-pass>
-DB_NAME=<your-db-name>
+DB_HOST=localhost
+DB_USER=leotest
+DB_PASS=leotest123
+DB_NAME=leotest
 HTTP_AUTH_KEY=dummy_key
 
 Step Three:
@@ -67,9 +67,9 @@ deploy the above resources to the cluster and make sure they work correctly, in 
 
 requirements:
 1). the commands of getting k8s cluster information.
-A: kubectl cluster-info   
+> A: kubectl cluster-info   
 2). the commands of deploying the above resource manifests.
-A: 
+> A: 
 ```bash
 kubectl apply -f ns.yaml
 kubectl apply -f deployment.yaml
