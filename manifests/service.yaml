@@ -1,0 +1,17 @@
+# Setup Service to provide access outside from cluster
+apiVersion: v1
+kind: Service
+metadata:
+  name: fastapi-project-template
+  labels:
+    app: fastapi-project-template
+  namespace: leo-k8s-work  
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8000
+      name: fastapi-project
+      protocol: TCP
+      targetPort: 8000
+  selector:
+    app: fastapi-project-template
